@@ -1,18 +1,18 @@
 package com.joskarman.joshuakaranja
 
 
-import android.graphics.Color
 import android.os.Bundle
-import android.provider.CalendarContract
-import androidx.fragment.app.Fragment
+import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import kotlinx.android.parcel.Parcelize
 import kotlinx.android.synthetic.main.fragment_details_entry.*
+import java.text.DecimalFormat
 import kotlin.random.Random
 
 /**
@@ -33,38 +33,44 @@ class DetailsEntryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         navController = view.findNavController()
 
-        calculateButton.setOnClickListener {
-            navController.navigate(R.id.action_detailsEntryFragment_to_BMIResultFragment)
-        }
-
-        weight.apply {
+        val weightNPicker = weight.apply {
             maxValue = 120
             minValue = 5
             value = 50
-            setOnValueChangedListener { picker, oldVal, newVal ->
-               Toast.makeText(context,"$newVal",Toast.LENGTH_SHORT).show()
-            }
         }
 
-        height.apply {
-            maxValue = 120
-            minValue = 5
-            value = 30
-            showDividers
+        val heightNPicker = height.apply {
+            maxValue = 250
+            minValue = 30
+            value = 150
         }
 
-        gender.apply {
+        val genderNPicker = gender.apply {
             minValue = 0
             maxValue = 1
             value = Random.nextInt(from = 0, until = 2)
             displayedValues = arrayOf("Male", "Female")
-
-            setOnValueChangedListener { picker, oldVal, newVal ->
-                Toast.makeText(context,"$newVal",Toast.LENGTH_SHORT).show()
-            }
         }
 
+        calculateButton.setOnClickListener {
+            val details = BMIDetails(
+                value = calCulateBMI(
+                    weightNPicker.value,
+                    heightNPicker.value
+                ),
+                name = nameET.text.toString()
+            )
+            val action = DetailsEntryFragmentDirections.actionDetailsEntryFragmentToBMIResultFragment(details)
+            navController.navigate(action)
+        }
     }
 
-
+    fun calCulateBMI(weight :Int,height: Int): Double{
+        val cmHeight = height.toDouble() / 100.toDouble()
+        return DecimalFormat("##.##").format((weight / (cmHeight * cmHeight))).toDouble()
+    }
 }
+
+@Parcelize
+data class BMIDetails(val value: Double, val name: String): Parcelable
+

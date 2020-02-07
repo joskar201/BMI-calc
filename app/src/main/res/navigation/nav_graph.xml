@@ -10,6 +10,7 @@
         android:name="com.joskarman.joshuakaranja.DetailsEntryFragment"
         android:label="fragment_details_entry"
         tools:layout="@layout/fragment_details_entry" >
+
         <action
             android:id="@+id/action_detailsEntryFragment_to_BMIResultFragment"
             app:destination="@id/BMIResultFragment"
@@ -17,12 +18,19 @@
             app:popExitAnim="@anim/slide_out_right"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
-            />
+            >
+
+        </action>
+
     </fragment>
 
     <fragment
         android:id="@+id/BMIResultFragment"
-        android:name="com.joskarman.joshuakaranja.BMIResultFragment"
+        android:name="com.joskarman.joshuakaranja.BmiResultFragment"
         android:label="fragment_bmiresult"
-        tools:layout="@layout/fragment_bmiresult" />
+        tools:layout="@layout/fragment_bmiresult" >
+        <argument
+            android:name="details"
+            app:argType="com.joskarman.joshuakaranja.BMIDetails" />
+    </fragment>
 </navigation>

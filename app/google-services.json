@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "574115660248",
+    "firebase_url": "https://bmicalc-ac5ba.firebaseio.com",
+    "project_id": "bmicalc-ac5ba",
+    "storage_bucket": "bmicalc-ac5ba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:574115660248:android:407caef8d860a67c22b2ad",
+        "android_client_info": {
+          "package_name": "com.joskarman.joshuakaranja"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "574115660248-ul214upohn2qj7lkoalcqmqik91mk7l4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.joskarman.joshuakaranja",
+            "certificate_hash": "337c3caf221836ed420fda8778b1e6aa889d43a2"
+          }
+        },
+        {
+          "client_id": "574115660248-4jelrc7jik31p11pu5e9srr1te0bdkr8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoROBJEHehGrafEWMVGEuW7cJeLVWP16w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "574115660248-4jelrc7jik31p11pu5e9srr1te0bdkr8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
