@@ -15,9 +15,6 @@ import kotlinx.android.synthetic.main.fragment_details_entry.*
 import java.text.DecimalFormat
 import kotlin.random.Random
 
-/**
- * A simple [Fragment] subclass.
- */
 class DetailsEntryFragment : Fragment() {
 
     lateinit var navController: NavController
@@ -58,10 +55,17 @@ class DetailsEntryFragment : Fragment() {
                     weightNPicker.value,
                     heightNPicker.value
                 ),
-                name = nameET.text.toString()
+                name = nameET.text.toString(),
+                gender = genderNPicker.value
             )
-            val action = DetailsEntryFragmentDirections.actionDetailsEntryFragmentToBMIResultFragment(details)
-            navController.navigate(action)
+
+            if (details.name.isEmpty()){
+                Toast.makeText(context,"Please enter your name",Toast.LENGTH_SHORT).show()
+            }else{
+                val action = DetailsEntryFragmentDirections.actionDetailsEntryFragmentToBMIResultFragment(details)
+                (activity as MainActivity).showAdd()
+                navController.navigate(action)
+            }
         }
     }
 
@@ -72,5 +76,5 @@ class DetailsEntryFragment : Fragment() {
 }
 
 @Parcelize
-data class BMIDetails(val value: Double, val name: String): Parcelable
+data class BMIDetails(val value: Double, val name: String, val gender: Int): Parcelable
 
