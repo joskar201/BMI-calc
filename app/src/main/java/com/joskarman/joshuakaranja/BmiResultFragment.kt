@@ -101,7 +101,7 @@ class BmiResultFragment : Fragment() {
     }
 
     private fun openPlayStore(){
-        val uri: Uri = Uri.parse("market://details?id=systems.digisolwarehouse.plutus")
+        val uri: Uri = Uri.parse("market://details?id=com.joskarman.joshuakaranja")
         val goToMarket = Intent(Intent.ACTION_VIEW, uri)
 
         goToMarket.addFlags(
@@ -117,7 +117,7 @@ class BmiResultFragment : Fragment() {
             startActivity(
                 Intent(
                     Intent.ACTION_VIEW,
-                    Uri.parse("http://play.google.com/store/apps/details?id=systems.digisolwarehouse.plutus")
+                    Uri.parse("http://play.google.com/store/apps/details?id=com.joskarman.joshuakaranja")
                 )
             )
         }
