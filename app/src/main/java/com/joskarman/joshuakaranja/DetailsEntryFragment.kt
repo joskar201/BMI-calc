@@ -49,6 +49,10 @@ class DetailsEntryFragment : Fragment() {
             displayedValues = arrayOf("Male", "Female")
         }
 
+        backIcon.setOnClickListener {
+            activity!!.onBackPressed()
+        }
+
         calculateButton.setOnClickListener {
             val details = BMIDetails(
                 value = calCulateBMI(

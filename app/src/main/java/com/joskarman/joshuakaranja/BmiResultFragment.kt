@@ -48,6 +48,10 @@ class BmiResultFragment : Fragment() {
             share(saveBitmap(takeViewScreenShot(view,view.height,view.width))!!)
         }
 
+        backIcon.setOnClickListener {
+            activity!!.onBackPressed()
+        }
+
     }
 
     private fun displayResults(details: BMIDetails) {
